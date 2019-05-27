@@ -21,5 +21,8 @@ describe('indexFunc', function() {
     it('should return Fizz if  6', function() {
       assert.equal(indexFunc.fizzbuzzfunc(6), 'Fizz');
     });
+    it('should return Buzz if 10', function() {
+      assert.equal(indexFunc.fizzbuzzfunc(10), 'Buzz');
+    });
   });
 });
