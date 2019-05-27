@@ -18,6 +18,12 @@ jobs: # a collection of steps
           key: dependency-cache-{{ checksum "package.json" }}
           paths:
             - ./node_modules
+      - run: # run install mocha
+          name: install mocha
+          command: npm install mocha
+      - run: # run install mocha-junit-reporter
+          name: install mocha-junit-reporter
+          command: npm install mocha-junit-reporter
       - run: # run tests
           name: test results
           command: mocha test --reporter mocha-junit-reporter --reporter-options mochaFile=./.circleci/project/test-results.xml
