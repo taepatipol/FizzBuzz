@@ -1,7 +1,7 @@
 const indexFunc = {};
 
 indexFunc.fizzbuzzfunc = function(x) {
-  
+  return "Fizz";
 };
 
 module.exports = indexFunc;
