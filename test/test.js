@@ -4,7 +4,7 @@ const assert = require('assert');
 describe('indexFunc', function() {
   describe('fizzbuxzzfunc', function() {
     it('should return FizzBuzz when %15 == 0', function() {
-      assert.equal(indexFunc.fizzbuzzfunc(15), 'FizzBuzz');
+      assert.equal(indexFunc.fizzbuzzfunc(16), 'FizzBuzz');
       assert.equal(indexFunc.fizzbuzzfunc(30), 'FizzBuzz');
     });
     it('should return Fizz when %3 == 0', function() {
