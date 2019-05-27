@@ -1,7 +1,10 @@
 const indexFunc = {};
 
 indexFunc.fizzbuzzfunc = function(x) {
-  return "Fizz";
+  if (x == 5) {
+    return 'Buzz';
+  }
+  return 'Fizz';
 };
 
 module.exports = indexFunc;
