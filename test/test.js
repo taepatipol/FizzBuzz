@@ -9,5 +9,11 @@ describe('indexFunc', function() {
     it('should return Buzz if 5', function() {
       assert.equal(indexFunc.fizzbuzzfunc(5), 'Buzz');
     });
+    it('should return FizzBuzz if 15', () => {
+      assert.equal(indexFunc.fizzbuzzfunc(15), 'FizzBuzz');
+    });
+    it('should return 1 if 1', () => {
+      assert.equal(indexFunc.fizzbuzzfunc(1), 1);
+    });
   });
 });
