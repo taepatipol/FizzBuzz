@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="Mocha Tests" time="0.001" tests="3" failures="0">
+  <testsuite name="Root Suite" timestamp="2019-05-27T06:05:54" tests="0" failures="0" time="0">
+  </testsuite>
+  <testsuite name="indexFunc" timestamp="2019-05-27T06:05:54" tests="0" file="D:\study\intern\fizzbuzz\test\test.js" failures="0" time="0">
+  </testsuite>
+  <testsuite name="fizzbuxzzfunc" timestamp="2019-05-27T06:05:54" tests="3" file="D:\study\intern\fizzbuzz\test\test.js" failures="0" time="0.001">
+    <testcase name="indexFunc fizzbuxzzfunc should return FizzBuzz when %15 == 0" time="0" classname="should return FizzBuzz when %15 == 0">
+    </testcase>
+    <testcase name="indexFunc fizzbuxzzfunc should return Fizz when %3 == 0" time="0.001" classname="should return Fizz when %3 == 0">
+    </testcase>
+    <testcase name="indexFunc fizzbuxzzfunc should return Buzz when %5 == 0" time="0" classname="should return Buzz when %5 == 0">
+    </testcase>
+  </testsuite>
+</testsuites>
