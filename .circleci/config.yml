@@ -14,20 +14,51 @@ jobs: # a collection of steps
       - run:
           name: install-npm-wee
           command: npm install
+      - run: npm install mocha-junit-reporter
+      - run: mkdir reports
       - save_cache: # special step to save the dependency cache
           key: dependency-cache-{{ checksum "package.json" }}
           paths:
             - ./node_modules
-      - run: # run tests
-          name: test
-          command: npm test
-      - store_artifacts: # special step to save test results as as artifact
-          # Upload test summary for display in Artifacts: https://circleci.com/docs/2.0/artifacts/ 
-          path: test-results.xml
-          prefix: tests
-      - store_artifacts: # for display in Artifacts: https://circleci.com/docs/2.0/artifacts/ 
-          path: coverage
-          prefix: coverage
-      - store_test_results: # for display in Test Summary: https://circleci.com/docs/2.0/collect-test-data/
-          path: test-results.xml
+      - run:
+          name: npm test
+          command: ./node_modules/.bin/nyc ./node_modules/.bin/mocha --recursive --timeout=10000 --exit --reporter mocha-junit-reporter --reporter-options mochaFile=reports/mocha/test-results.xml
+          when: always
+      - run:
+          name: eslint
+          command: |
+            ./node_modules/.bin/eslint ./ --format junit --output-file ./reports/eslint/eslint.xml
+          when: always
+      - run:
+          name: Setup Code Climate test-reporter
+          command: |
+            # download test reporter as a static binary
+            curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+            chmod +x ./cc-test-reporter
+            ./cc-test-reporter before-build
+          when: always
+      - run:
+          name: code-coverage
+          command: |
+            mkdir coverage
+            # nyc report requires that nyc has already been run,
+            # which creates the .nyc_output folder containing necessary data
+            ./node_modules/.bin/nyc report --reporter=text-lcov > coverage/lcov.info
+            ./cc-test-reporter after-build -t lcov
+          when: always
+
+          # Upload results
+
+          - store_test_results:
+              path: reports
+
+          - store_artifacts:
+              path: ./reports/mocha/test-results.xml
+
+          - store_artifacts:
+              path: ./reports/eslint/eslint.xml
+
+          - store_artifacts: # upload test coverage as artifact
+              path: ./coverage/lcov.info
+              prefix: tests
       # See https://circleci.com/docs/2.0/deployment-integrations/ for deploy examples
