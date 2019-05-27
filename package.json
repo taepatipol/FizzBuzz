@@ -4,11 +4,17 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "mocha"
+    "test": "mocha",
+    "lint": "eslint .",
+    "start": "node exec.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "mocha": "^6.1.4"
+  },
+  "devDependencies": {
+    "eslint": "^5.16.0",
+    "eslint-config-google": "^0.13.0"
   }
 }
