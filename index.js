@@ -5,7 +5,7 @@ indexFunc.fizzbuzzfunc = function(x) {
     return 'Buzz';
   } else if (x == 15) {
     return 'FizzBuzz';
-  } else if (x == 3) {
+  } else if (x % 3 == 0) {
     return 'Fizz';
   } else {
     return x;
