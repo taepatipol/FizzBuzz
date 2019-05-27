@@ -1,7 +1,7 @@
 const indexFunc = {};
 
 indexFunc.fizzbuzzfunc = function(x) {
-  if (x == 15) {
+  if (x % 15 == 0) {
     return 'FizzBuzz';
   } else if (x % 5 == 0) {
     return 'Buzz';
