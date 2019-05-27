@@ -1,15 +1,24 @@
-var x;
-for (x = 1; x <= 100; x++) {
+let indexFunc = {};
+
+indexFunc.fizzbuzzfunc = function(x){
     if(x % 3 == 0 && x % 5 == 0){
-        console.log("FizzBuzz");
+        return "FizzBuzz";
     }
     else if (x % 3 == 0) {
-        console.log("Fizz");
+        return "Fizz";
     }
     else if (x % 5 == 0) {
-        console.log("Buzz");
+        return "Buzz";
     }
     else {
-        console.log(x);
+        return x;
     }
-}
+};
+
+module.exports = indexFunc;
+
+var x;
+
+// for (x = 1; x <= 100; x++) {
+//     console.log(fizzbuzzfunc(x));
+// }
